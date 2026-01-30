@@ -5,6 +5,9 @@
     "email": "info@athena-factory.be",
     "logo_text": "A",
     "footer_text": "© 2026 Athena CMS Factory. Innovatie uit Gent.",
-    "site_logo_image": "placeholder-1769784304214.jpg"
+    "site_logo_image": "athena-icon-1769792493847.svg",
+    "light_title_color": "#ea672e",
+    "light_primary_color": "#293551",
+    "hero_overlay_opacity": "0.87"
   }
 ]

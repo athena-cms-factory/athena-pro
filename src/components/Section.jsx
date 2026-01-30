@@ -28,7 +28,9 @@ const Section = ({ data }) => {
                   cmsBind={{file: 'hero', index: 0, key: 'image'}} 
                   className="w-full h-full object-cover" 
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/90 to-primary/40"></div>
+                <div className="absolute inset-0 z-20 pointer-events-none" style={{ 
+                  backgroundImage: 'linear-gradient(to right, var(--hero-overlay-start, rgba(0,0,0,0.8)), var(--hero-overlay-end, rgba(0,0,0,0.32)))' 
+                }}></div>
               </div>
               <div className="relative z-10 text-left px-6 max-w-7xl w-full">
                 <div className="max-w-3xl">

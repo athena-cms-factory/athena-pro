@@ -102,6 +102,14 @@
             const targetTheme = key.startsWith('dark') ? 'dark' : 'light';
             const isGlobal = key.startsWith('global_');
 
+            if (key === 'hero_overlay_opacity') {
+                let opacity = parseFloat(value);
+                if (isNaN(opacity)) opacity = 0.8;
+                document.documentElement.style.setProperty('--hero-overlay-start', `rgba(0, 0, 0, ${opacity})`);
+                document.documentElement.style.setProperty('--hero-overlay-end', `rgba(0, 0, 0, ${opacity * 0.4})`);
+                return;
+            }
+
             if (isGlobal || targetTheme === currentTheme) {
                 const vars = themeMappings[currentTheme][key];
                 if (vars) {
@@ -239,10 +247,16 @@
                 }
             }
 
+            // Extract formatting (v7.4.4)
+            const bind = JSON.parse(target.getAttribute('data-dock-bind'));
+            const bindKey = `${bind.file}:${bind.index || 0}:${bind.key}`;
+            const currentFormatting = window.athenaStyles ? (window.athenaStyles[bindKey] || {}) : {};
+
             window.parent.postMessage({
                 type: 'SITE_CLICK',
-                binding: JSON.parse(target.getAttribute('data-dock-bind')),
+                binding: bind,
                 currentValue: currentValue || "",
+                currentFormatting: currentFormatting,
                 tagName: target.tagName
             }, '*');
         }
