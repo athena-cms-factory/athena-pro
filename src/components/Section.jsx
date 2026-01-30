@@ -56,7 +56,7 @@ const Section = ({ data }) => {
         if (sectionName === 'intro') {
           const item = items[0];
           return (
-            <section key={idx} data-dock-section="intro" className="py-32 px-6 overflow-hidden">
+            <section key={idx} id="intro" data-dock-section="intro" className="py-32 px-6 overflow-hidden">
               <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-20">
                 <div className="w-full md:w-1/2 relative">
                   <div className="absolute -top-10 -left-10 w-40 h-40 bg-accent/10 rounded-full blur-3xl"></div>
@@ -84,7 +84,7 @@ const Section = ({ data }) => {
 
         // GRID SECTIONS (VOORDELEN, INNOVATIE, SHOWCASE, PROCES)
         return (
-          <section key={idx} data-dock-section={sectionName} className={`py-32 px-6 ${idx % 2 === 0 ? 'bg-black/5 dark:bg-white/5' : ''}`}>
+          <section key={idx} id={sectionName} data-dock-section={sectionName} className={`py-32 px-6 ${idx % 2 === 0 ? 'bg-black/5 dark:bg-white/5' : ''}`}>
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-24">
                 <h2 className="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 capitalize">
@@ -166,7 +166,7 @@ const Section = ({ data }) => {
 
       {/* FOOTER-LIKE CONTACT SECTION */}
       {data.contact && data.contact.length > 0 && (
-        <section data-dock-section="contact" className="py-32 px-6 bg-primary text-white overflow-hidden relative">
+        <section id="contact" data-dock-section="contact" className="py-32 px-6 bg-primary text-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
           <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-20">
             <div className="max-w-2xl">

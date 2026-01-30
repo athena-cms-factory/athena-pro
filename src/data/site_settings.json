@@ -10,8 +10,8 @@
     "light_primary_color": "#4b556c",
     "hero_overlay_opacity": "0.78",
     "light_heading_color": "#819bda",
-    "light_text_color": "#78797d",
-    "light_bg_color": "#f71818",
+    "light_text_color": "#595959",
+    "light_bg_color": "#aab09c",
     "light_header_color": "#aab09c",
     "light_button_color": "#0bb747",
     "light_accent_color": "#4955fd"
