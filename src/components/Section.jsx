@@ -34,11 +34,11 @@ const Section = ({ data }) => {
                 }}></div>
               </div>
               <div className="relative z-10 text-left px-6 max-w-7xl w-full">
-                <div className="max-w-3xl">
+                <div className="max-w-3xl mt-[4.25rem]">
                   <h1 className="text-5xl md:text-7xl font-serif font-extrabold mb-8 leading-tight">
                     <EditableText value={item.title} cmsBind={{file: 'hero', index: 0, key: 'title'}} />
                   </h1>
-                  <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed font-light">
+                  <p className="text-xl md:text-2xl text-white/90 mb-16 leading-relaxed font-light">
                     <EditableText value={item.subtitle} cmsBind={{file: 'hero', index: 0, key: 'subtitle'}} />
                   </p>
                   <button 
