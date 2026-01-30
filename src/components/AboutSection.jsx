@@ -18,7 +18,7 @@ const AboutSection = ({ data }) => {
   const missieField = Object.keys(info).find(k => k.toLowerCase().includes('missie') || k.toLowerCase().includes('about') || k.toLowerCase().includes('over')) || 'missie_visie';
 
   return (
-    <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900" data-dock-section="about">
+    <section className="py-20 px-6" data-dock-section="about">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {imgSrc && (
