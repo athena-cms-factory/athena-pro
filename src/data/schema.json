@@ -1,0 +1,107 @@
+{
+  "blueprint_name": "professional-service-provider",
+  "description": "High-end portfolio en service site voor Karel Decherf. Focus op AI, Full-stack en Athena CMS.",
+  "features": {
+    "ecommerce": false,
+    "google_search_links": false,
+    "search_context": "Karel Decherf AI Automation Full-stack Developer Gent"
+  },
+  "data_structure": [
+    {
+      "table_name": "hero",
+      "columns": [
+        "title",
+        "subtitle",
+        "cta_text",
+        "image"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "hero",
+      "title": "Hero",
+      "fields": {
+        "title": "string",
+        "subtitle": "text",
+        "cta_text": "string",
+        "image": "image"
+      }
+    },
+    {
+      "id": "intro",
+      "title": "Over Mij",
+      "fields": {
+        "title": "string",
+        "content": "text",
+        "subcontent": "text",
+        "image": "image"
+      }
+    },
+    {
+      "id": "expertise",
+      "title": "Diensten & Expertise",
+      "fields": {
+        "items": [
+          {
+            "title": "string",
+            "description": "text",
+            "icon": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tech_stack",
+      "title": "Technologische Stack",
+      "fields": {
+        "categories": [
+          {
+            "name": "string",
+            "skills": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "projects",
+      "title": "Portfolio & Projecten",
+      "fields": {
+        "items": [
+          {
+            "name": "string",
+            "category": "string",
+            "description": "text",
+            "link": "string",
+            "image": "image"
+          }
+        ]
+      }
+    },
+    {
+      "id": "experience",
+      "title": "Loopbaan",
+      "fields": {
+        "items": [
+          {
+            "period": "string",
+            "role": "string",
+            "company": "string",
+            "description": "text"
+          }
+        ]
+      }
+    },
+    {
+      "id": "contact",
+      "title": "Contact",
+      "fields": {
+        "title": "string",
+        "email": "string",
+        "linkedin": "string",
+        "github": "string",
+        "location": "string"
+      }
+    }
+  ]
+}
