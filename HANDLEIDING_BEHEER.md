@@ -1,6 +1,6 @@
 # 📘 Handleiding: athena-pro
 
-**Type Website:** professional-service-provider
+**Type Website:** athena-cms-factory-promo
 **Status:** Live & Beheerbaar via Google Sheets
 
 ---

@@ -1,10 +1,7 @@
 {
-  "site_name": "Karel Decherf | Athena CMS Architect",
-  "theme": "modern",
-  "colors": {
-    "primary": "#8b5cf6",
-    "secondary": "#10b981",
-    "background": "#0f172a",
-    "text": "#f8fafc"
-  }
+  "site_name": "Athena CMS Factory",
+  "tagline": "High-End AI Webdesign voor Vlaamse KMO's",
+  "email": "info@athena-factory.be",
+  "logo_text": "Athena",
+  "footer_text": "© 2026 Athena CMS Factory. Innovatie uit Gent."
 }

@@ -1,116 +1,85 @@
 import React from 'react';
 import EditableText from './EditableText';
 
-export default function Footer({ primaryTable }) {
-  const info = primaryTable?.[0] || {};
+export default function Footer({ data }) {
+  const siteSettings = data?.site_settings || {};
+  const contactInfo = data?.contact?.[0] || {};
   
-  // Zoek velden met verschillende mogelijke aliassen
-  const naam = info.bedrijfsnaam || info.naam_bedrijf || info['{{PRIMARY_FIELD_NAME}}'] || info.naam || info.titel || 'athena-pro';
-  const adres = info.adres || info.address || info.locatie || '';
-  const telefoon = info.telefoonnummer || info.telefoon || info.phone || '';
-  const email = info.email_algemeen || info.email_publiek || info.email || '';
-  const kvk = info.kvk_nummer || info.kvk || info.chamber_of_commerce || '';
-
-  // Zoek de juiste keys voor de editor
-  const findKey = (search) => Object.keys(info).find(k => k.toLowerCase().includes(search));
-  
-  const naamKey = findKey('naam') || findKey('titel') || 'bedrijfsnaam';
-  const adresKey = findKey('adres') || findKey('address') || 'adres';
-  const telKey = findKey('telefoon') || findKey('phone') || 'telefoonnummer';
-  const emailKey = findKey('email') || 'email_algemeen';
-  const kvkKey = findKey('kvk') || 'kvk_nummer';
+  const naam = siteSettings.site_name || 'Athena CMS Factory';
+  const email = contactInfo.email || siteSettings.email || '';
+  const locatie = contactInfo.locatie || '';
+  const btw = contactInfo.btw_nummer || '';
+  const linkedin = contactInfo.linkedin_url || '';
 
   return (
-    <footer className="py-16 bg-slate-900 text-slate-300 border-t border-slate-800">
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Company Info */}
-          <div>
-            <h3 className="text-2xl font-bold text-white mb-4">{naam}</h3>
-            {adres && (
-              <div className="mb-3 flex items-start gap-2">
-                <svg className="w-5 h-5 text-accent mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <EditableText 
-                  tag="p"
-                  className="text-sm leading-relaxed"
-                  table="hero"
-                  id={0}
-                  field={adresKey}
-                >
-                  {adres}
-                </EditableText>
-              </div>
-            )}
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Contact</h4>
-            {telefoon && (
-              <div className="mb-3 flex items-center gap-2">
-                <svg className="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <div className="text-sm">
-                    <EditableText
-                      tag="span"
-                      className="hover:text-accent transition-colors"
-                      table="hero"
-                      id={0}
-                      field={telKey}
-                    >
-                      {telefoon}
-                    </EditableText>
-                </div>
-              </div>
-            )}
-            {email && (
-              <div className="mb-3 flex items-center gap-2">
-                <svg className="w-5 h-5 text-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <div className="text-sm">
-                    <EditableText 
-                        tag="span"
-                        className="hover:text-accent transition-colors"
-                        table="hero"
-                        id={0}
-                        field={emailKey}
-                    >
-                        {email}
-                    </EditableText>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-lg font-bold text-white mb-4">Bedrijfsgegevens</h4>
-            {kvk && (
-              <p className="text-sm mb-2">
-                <span className="text-slate-400">KVK:</span>{' '}
-                <EditableText 
-                  tag="span"
-                  className="text-white"
-                  table="hero"
-                  id={0}
-                  field={kvkKey}
-                >
-                  {kvk}
-                </EditableText>
+    <footer className="py-24 bg-slate-900 text-slate-400 border-t border-slate-800 relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 mb-20">
+          
+          {/* Brand Identity */}
+          <div className="space-y-6">
+            <h3 className="text-3xl font-serif font-bold text-white">
+              <EditableText value={naam} cmsBind={{file: 'site_settings', index: 0, key: 'site_name'}} />
+            </h3>
+            {siteSettings.tagline && (
+              <p className="text-lg leading-relaxed font-light">
+                <EditableText value={siteSettings.tagline} cmsBind={{file: 'site_settings', index: 0, key: 'tagline'}} />
               </p>
             )}
           </div>
+
+          {/* Contact Details */}
+          <div className="space-y-6">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Contact</h4>
+            <ul className="space-y-4">
+              {email && (
+                <li className="flex items-center gap-4">
+                  <i className="fa-solid fa-envelope text-accent w-5"></i>
+                  <EditableText value={email} cmsBind={{file: 'contact', index: 0, key: 'email'}} />
+                </li>
+              )}
+              {locatie && (
+                <li className="flex items-center gap-4">
+                  <i className="fa-solid fa-location-dot text-accent w-5"></i>
+                  <EditableText value={locatie} cmsBind={{file: 'contact', index: 0, key: 'locatie'}} />
+                </li>
+              )}
+              {linkedin && (
+                <li className="flex items-center gap-4">
+                  <i className="fa-brands fa-linkedin text-accent w-5"></i>
+                  <a href={linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn Profile</a>
+                </li>
+              )}
+            </ul>
+          </div>
+
+          {/* Legal / Company Info */}
+          <div className="space-y-6">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-accent">Bedrijfsgegevens</h4>
+            <div className="space-y-4">
+              {btw && (
+                <p className="flex items-center gap-2">
+                  <span className="text-slate-500">BTW:</span> 
+                  <EditableText value={btw} cmsBind={{file: 'contact', index: 0, key: 'btw_nummer'}} />
+                </p>
+              )}
+              <p className="text-sm font-light leading-relaxed">
+                <EditableText value={siteSettings.footer_text || 'Professionele website geleverd door Athena CMS Factory.'} cmsBind={{file: 'site_settings', index: 0, key: 'footer_text'}} />
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 text-center text-sm text-slate-500">
+        {/* Copyright Bar */}
+        <div className="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6 text-sm">
           <p>&copy; {new Date().getFullYear()} {naam}. Alle rechten voorbehouden.</p>
-          <p className="mt-2 text-xs">Gemaakt met Athena CMS Factory</p>
+          <div className="flex items-center gap-2 opacity-50">
+            <img src="./athena-icon.svg" alt="Athena Logo" className="w-5 h-5" />
+            <span>Gemaakt met Athena CMS Factory</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -17,7 +17,7 @@ const App = ({ data }) => {
           <Section data={data} />
         </main>
 
-        <Footer primaryTable={data[primaryTable]} />
+        <Footer data={data} />
       </div>
     </Router>
   );
