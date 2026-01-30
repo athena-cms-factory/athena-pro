@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 /**
  * EditableMedia (Docked Track)
  * Handles images and videos with Dock-driven editing.
- * Minimalist version for MPA/Docked sites.
+ * v7.4.3: Strict Pointer Events to ensure Editor detects IMG tag target.
  */
-export default function EditableMedia({ src: rawSrc, alt, className, cmsBind, dataItem = {}, ...props }) {
+export default function EditableMedia({ src: rawSrc, alt, className, cmsBind, dataItem = {}, fallback, ...props }) {
   const isDev = import.meta.env.DEV;
   const [hasError, setHasError] = useState(false);
 
@@ -21,39 +21,68 @@ export default function EditableMedia({ src: rawSrc, alt, className, cmsBind, da
   const loopKey = `${cmsBind?.key}_loop`;
   const isLooping = dataItem[loopKey] !== false && dataItem[loopKey] !== "false";
 
+  // Prepare Dock Attributes
+  const dockAttrs = isDev ? {
+    'data-dock-bind': JSON.stringify(cmsBind),
+    'data-dock-current': rawSrc || "",
+    'data-dock-type': 'media'
+  } : {};
+
   const renderContent = () => {
+    // 1. GELDIGE MEDIA (IMAGE OF VIDEO)
     if (src && !hasError) {
       if (isVideo) {
-          return <video src={src} autoPlay loop={isLooping} muted playsInline className="w-full h-full object-cover" onError={() => setHasError(true)} />;
+          return <video src={src} autoPlay loop={isLooping} muted playsInline className="w-full h-full object-cover relative z-10" onError={() => setHasError(true)} {...dockAttrs} />;
       }
-      return <img src={src} alt={alt} className="w-full h-full object-cover" onError={() => setHasError(true)} {...props} />;
+      return <img src={src} alt={alt} className="w-full h-full object-cover relative z-10" onError={() => setHasError(true)} {...props} {...dockAttrs} />;
     }
+    
+    // 2. LEEG / ERROR -> GRAFISCHE FALLBACK
+    const getFallbackSrc = () => {
+        if (typeof fallback === 'string' && fallback.length <= 2) {
+            // Letter fallback SVG
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="#3b82f6"/><text x="50" y="55" font-family="serif" font-weight="900" font-size="60" fill="white" text-anchor="middle" alignment-baseline="middle">${fallback}</text></svg>`;
+            return `data:image/svg+xml;base64,${btoa(svg)}`;
+        }
+        // Generic fallback SVG
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f1f5f9"/><path d="M30 30h40v40H30z" fill="#cbd5e1"/></svg>`;
+        return `data:image/svg+xml;base64,${btoa(svg)}`;
+    };
+
     return (
-      <div className="w-full h-full bg-slate-100 dark:bg-slate-900 flex flex-col items-center justify-center text-slate-300 dark:text-slate-700 gap-2 border-2 border-dashed border-slate-200 dark:border-slate-800 min-h-[150px]">
-        <i className={`fa-solid ${isVideo ? 'fa-video' : 'fa-image'} text-4xl opacity-20`}></i>
-        <span className="text-[10px] uppercase font-bold opacity-40">Slot: {cmsBind?.key}</span>
-      </div>
+      <img 
+        src={getFallbackSrc()} 
+        alt="placeholder" 
+        className="w-full h-full object-cover opacity-50 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 relative z-10" 
+        {...dockAttrs} 
+      />
     );
   };
 
   if (!isDev) {
-    if (!src || hasError) return null;
+    if (!src || hasError) {
+        if (typeof fallback === 'string' && fallback.length <= 2) {
+            return <div className="w-full h-full bg-accent flex items-center justify-center text-white font-serif font-black">{fallback}</div>;
+        }
+        return null;
+    }
     if (isVideo) return <video src={src} autoPlay loop={isLooping} muted playsInline className={className} {...props} />;
     return <img src={src} alt={alt} className={className} onError={() => setHasError(true)} {...props} />;
   }
 
-  // In Dev mode, we return a wrapper that the Dock can identify
+  // DEV MODE: Wrapper
+  // We remove cursor-pointer from wrapper and let the content decide pointer events
   return (
     <div 
-      className={`relative group overflow-hidden cursor-pointer ${className}`}
-      data-dock-bind={JSON.stringify(cmsBind)}
-      data-dock-current={rawSrc || ""}
+      className={`relative group overflow-hidden ${className}`} 
       {...props}
     >
-      {renderContent()}
+      <div className="w-full h-full cursor-pointer pointer-events-auto">
+        {renderContent()}
+      </div>
       
-      {/* NO in-site tools for docked track - Dock handles this via Drag & Drop */}
-      <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors pointer-events-none border-4 border-transparent group-hover:border-blue-500/30 rounded-inherit"></div>
+      {/* Overlay - STRICTLY pointer-events-none */}
+      <div className="absolute inset-0 bg-blue-500/0 group-hover:bg-blue-500/10 transition-colors pointer-events-none border-4 border-transparent group-hover:border-blue-500/40 rounded-inherit z-30"></div>
     </div>
   );
 }

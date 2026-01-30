@@ -1,7 +1,10 @@
-{
-  "site_name": "Athena CMS Factory",
-  "tagline": "High-End AI Webdesign voor Vlaamse KMO's",
-  "email": "info@athena-factory.be",
-  "logo_text": "Athena",
-  "footer_text": "© 2026 Athena CMS Factory. Innovatie uit Gent."
-}
+[
+  {
+    "site_name": "Athena CMS Factory",
+    "tagline": "High-End AI Webdesign voor Vlaamse KMO's",
+    "email": "info@athena-factory.be",
+    "logo_text": "A",
+    "footer_text": "© 2026 Athena CMS Factory. Innovatie uit Gent.",
+    "site_logo_image": "placeholder-1769784304214.jpg"
+  }
+]
