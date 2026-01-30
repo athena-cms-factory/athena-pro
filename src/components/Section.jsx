@@ -40,7 +40,7 @@ const Section = ({ data }) => {
                   <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed font-light">
                     <EditableText value={item.subtitle} cmsBind={{file: 'hero', index: 0, key: 'subtitle'}} />
                   </p>
-                  <button className="bg-accent text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl hover:bg-accent/90 transition-all transform hover:scale-105">
+                  <button className="bg-[var(--color-button-bg)] text-white px-10 py-5 rounded-full text-xl font-bold shadow-2xl hover:opacity-90 transition-all transform hover:scale-105">
                     <EditableText value={item.cta_text} cmsBind={{file: 'hero', index: 0, key: 'cta_text'}} />
                   </button>
                 </div>
