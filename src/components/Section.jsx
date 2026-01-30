@@ -14,6 +14,7 @@ const Section = ({ data }) => {
   return (
     <div className="flex flex-col">
       {sectionOrder.map((sectionName, idx) => {
+        if (sectionName === 'contact') return null;
         const items = data[sectionName] || [];
         if (items.length === 0) return null;
 
@@ -164,31 +165,47 @@ const Section = ({ data }) => {
         );
       })}
 
-      {/* FOOTER-LIKE CONTACT SECTION */}
+      {/* HIGH-IMPACT CTA / CONTACT SECTION */}
       {data.contact && data.contact.length > 0 && (
-        <section id="contact" data-dock-section="contact" className="py-32 px-6 bg-primary text-white overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-          <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between gap-20">
-            <div className="max-w-2xl">
-              <h2 className="text-5xl md:text-7xl font-serif font-bold mb-10 leading-tight">
-                <EditableText value={data.contact[0].title} cmsBind={{file: 'contact', index: 0, key: 'title'}} />
-              </h2>
-              <div className="flex flex-wrap gap-8">
-                <a href={`mailto:${data.contact[0].email}`} className="flex items-center gap-4 text-2xl font-light hover:text-accent transition-colors">
-                  <i className="fa-solid fa-envelope text-accent"></i>
-                  <EditableText value={data.contact[0].email} cmsBind={{file: 'contact', index: 0, key: 'email'}} />
-                </a>
-                <div className="flex items-center gap-4 text-2xl font-light">
-                  <i className="fa-solid fa-location-dot text-accent"></i>
-                  <EditableText value={data.contact[0].location} cmsBind={{file: 'contact', index: 0, key: 'location'}} />
+        <section id="contact" data-dock-section="contact" className="py-32 px-6 bg-[var(--color-primary)] text-white overflow-hidden relative">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -ml-48 -mb-48"></div>
+          
+          <div className="max-w-7xl mx-auto relative z-10">
+            <div className="bg-white/5 backdrop-blur-2xl rounded-[4rem] p-12 md:p-20 border border-white/10 shadow-2xl">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+                <div className="max-w-2xl text-center lg:text-left">
+                  <h2 className="text-5xl md:text-7xl font-serif font-bold mb-8 leading-tight">
+                    <EditableText value={data.contact[0].titel} cmsBind={{file: 'contact', index: 0, key: 'titel'}} />
+                  </h2>
+                  <p className="text-xl text-white/70 mb-0 font-light">
+                    Klaar om uw digitale aanwezigheid naar een hoger niveau te tillen? Laat ons samen iets buitengewoons bouwen.
+                  </p>
+                </div>
+                
+                <div className="flex flex-col items-center lg:items-end gap-10">
+                  <a 
+                    href={`mailto:${data.contact[0].email}?subject=${encodeURIComponent("Projectaanvraag via Athena CMS Factory")}`}
+                    className="bg-accent hover:bg-accent/90 text-white px-12 py-6 rounded-full text-2xl font-bold shadow-2xl transition-all transform hover:scale-105 active:scale-95 flex items-center gap-4"
+                  >
+                    <i className="fa-solid fa-paper-plane"></i>
+                    Start uw Project
+                  </a>
+                  
+                  <div className="flex flex-wrap justify-center lg:justify-end gap-10 text-white/60">
+                    <div className="flex items-center gap-3">
+                      <i className="fa-solid fa-location-dot text-accent"></i>
+                      <EditableText value={data.contact[0].locatie} cmsBind={{file: 'contact', index: 0, key: 'locatie'}} />
+                    </div>
+                    {data.contact[0].linkedin_url && (
+                      <a href={data.contact[0].linkedin_url} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-3">
+                        <i className="fa-brands fa-linkedin text-accent text-xl"></i>
+                        LinkedIn
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-xl p-12 rounded-[4rem] border border-white/20">
-               <div className="text-3xl font-serif font-bold mb-6">Volg ons</div>
-               <a href={data.contact[0].linkedin} target="_blank" rel="noopener noreferrer" className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center text-3xl hover:scale-110 transition-transform">
-                  <i className="fa-brands fa-linkedin-in"></i>
-               </a>
             </div>
           </div>
         </section>

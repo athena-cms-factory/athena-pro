@@ -7,13 +7,13 @@
     "footer_text": "© 2026 Athena CMS Factory. Innovatie uit Gent.",
     "site_logo_image": "athena-icon-1769792493847.svg",
     "light_title_color": "#f7f7f8",
-    "light_primary_color": "#4b556c",
+    "light_primary_color": "#333842",
     "hero_overlay_opacity": "0.78",
     "light_heading_color": "#819bda",
     "light_text_color": "#595959",
     "light_bg_color": "#aab09c",
     "light_header_color": "#aab09c",
-    "light_button_color": "#0bb747",
+    "light_button_color": "#4955fd",
     "light_accent_color": "#4955fd"
   }
 ]
