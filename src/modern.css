@@ -75,7 +75,16 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1 {
+    color: var(--color-title);
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.2;
+    @apply tracking-tight;
+  }
+
+  h2, h3, h4 {
+    color: var(--color-heading);
     font-family: var(--font-serif);
     font-weight: 700;
     line-height: 1.2;

@@ -28,6 +28,7 @@ const App = ({ data }) => {
     const mappings = {
         light_primary_color: '--color-primary',
         light_heading_color: '--color-heading',
+        light_title_color: '--color-title',
         light_accent_color: '--color-accent',
         light_button_color: '--color-button-bg',
         light_card_color: '--color-card-bg',
@@ -36,6 +37,7 @@ const App = ({ data }) => {
         light_text_color: '--color-text',
         dark_primary_color: '--color-primary',
         dark_heading_color: '--color-heading',
+        dark_title_color: '--color-title',
         dark_accent_color: '--color-accent',
         dark_button_color: '--color-button-bg',
         dark_card_color: '--color-card-bg',

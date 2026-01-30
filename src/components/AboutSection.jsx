@@ -34,7 +34,7 @@ const AboutSection = ({ data }) => {
             </div>
           )}
           <div className={`order-1 ${imgSrc ? 'md:order-2' : 'md:col-span-2 text-center'}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900 dark:text-white">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
               Over Ons
             </h2>
             <div className={`h-1 w-20 bg-accent mb-8 ${imgSrc ? '' : 'mx-auto'}`}></div>
