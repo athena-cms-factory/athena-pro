@@ -17,7 +17,7 @@ if (fs.existsSync(pluginPath)) {
 }
 
 export default defineConfig({
-  base: '/athena-pro/', 
+  base: process.env.NODE_ENV === 'production' ? '/athena-pro/' : '/', 
   plugins: [
     react(),
     tailwindcss(),

@@ -8,7 +8,7 @@
     "site_logo_image": "athena-icon-1769792493847.svg",
     "light_title_color": "#f5f5ef",
     "light_primary_color": "#333842",
-    "hero_overlay_opacity": 0.78,
+    "hero_overlay_opacity": "0.78",
     "light_heading_color": "#819bda",
     "light_text_color": "#595959",
     "light_bg_color": "#aab09c",
