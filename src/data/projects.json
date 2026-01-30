@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "name": "Athena CMS Factory",
+      "category": "Software Engine",
+      "description": "Automatische generatie van React/Tailwind websites aangedreven door Gemini AI.",
+      "link": "https://github.com/KarelTestSpecial/athena",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop\u0026q=80\u0026w=2000"
+    },
+    {
+      "name": "Vegan BioTech Report",
+      "category": "Web & AI",
+      "description": "Geautomatiseerde nieuwsbrief en longread website die met AI data verzamelt.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop\u0026q=80\u0026w=2000"
+    },
+    {
+      "name": "Battery Percentage Versie",
+      "category": "Chrome Extension",
+      "description": "Slimme notificaties en toolbar display voor batterijstatus.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1589152177592-e205149a3a2b?auto=format&fit=crop\u0026q=80\u0026w=2000"
+    },
+    {
+      "name": "Kanban Pro",
+      "category": "Full-stack Java",
+      "description": "Enterprise-grade Kanban bord met Spring Boot en PostgreSQL.",
+      "link": "#",
+      "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop\u0026q=80\u0026w=2000"
+    }
+  ]
+}

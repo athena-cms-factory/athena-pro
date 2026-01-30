@@ -1,3 +1,9 @@
 {
-  "sections": {}
+  "hero": { "visible": true },
+  "intro": { "visible": true },
+  "expertise": { "visible": true },
+  "tech_stack": { "visible": true },
+  "projects": { "visible": true },
+  "experience": { "visible": true },
+  "contact": { "visible": true }
 }

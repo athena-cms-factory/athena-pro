@@ -1,10 +1,10 @@
 {
-  "blueprint_name": "professional-service-provider",
-  "description": "High-end portfolio en service site voor Karel Decherf. Focus op AI, Full-stack en Athena CMS.",
+  "blueprint_name": "athena-cms-factory-promo",
+  "description": "Conversie-gerichte landingspagina voor de Athena CMS Factory. Gericht op Vlaamse KMO's die nood hebben aan een high-end website via AI-automatisatie.",
   "features": {
     "ecommerce": false,
     "google_search_links": false,
-    "search_context": "Karel Decherf AI Automation Full-stack Developer Gent"
+    "search_context": "Athena CMS Factory website laten maken KMO Vlaanderen AI automatisatie"
   },
   "data_structure": [
     {
@@ -20,7 +20,7 @@
   "sections": [
     {
       "id": "hero",
-      "title": "Hero",
+      "title": "Hoofdpagina",
       "fields": {
         "title": "string",
         "subtitle": "text",
@@ -30,7 +30,7 @@
     },
     {
       "id": "intro",
-      "title": "Over Mij",
+      "title": "De Revolutie in Webdesign",
       "fields": {
         "title": "string",
         "content": "text",
@@ -39,8 +39,8 @@
       }
     },
     {
-      "id": "expertise",
-      "title": "Diensten & Expertise",
+      "id": "voordelen",
+      "title": "Waarom kiezen voor Athena?",
       "fields": {
         "items": [
           {
@@ -52,20 +52,20 @@
       }
     },
     {
-      "id": "tech_stack",
-      "title": "Technologische Stack",
+      "id": "innovatie",
+      "title": "De Kracht van de Factory",
       "fields": {
         "categories": [
           {
             "name": "string",
-            "skills": "string"
+            "skills": "text"
           }
         ]
       }
     },
     {
-      "id": "projects",
-      "title": "Portfolio & Projecten",
+      "id": "showcase",
+      "title": "Recent Gerealiseerde Sites",
       "fields": {
         "items": [
           {
@@ -79,27 +79,26 @@
       }
     },
     {
-      "id": "experience",
-      "title": "Loopbaan",
+      "id": "proces",
+      "title": "Van Aanvraag tot Live in 24u",
       "fields": {
         "items": [
           {
-            "period": "string",
-            "role": "string",
-            "company": "string",
-            "description": "text"
+            "stap": "string",
+            "titel": "string",
+            "tijdsduur": "string",
+            "uitleg": "text"
           }
         ]
       }
     },
     {
       "id": "contact",
-      "title": "Contact",
+      "title": "Start Uw Project",
       "fields": {
         "title": "string",
         "email": "string",
         "linkedin": "string",
-        "github": "string",
         "location": "string"
       }
     }

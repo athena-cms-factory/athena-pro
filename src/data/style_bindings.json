@@ -1,1 +1,9 @@
-{}
+{
+  "hero:0:title": {
+    "bold": false,
+    "italic": false,
+    "fontSize": "16px",
+    "textAlign": "left",
+    "fontFamily": "sans-serif"
+  }
+}

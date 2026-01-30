@@ -1,3 +1,10 @@
 {
-  "title": "athena-pro"
+  "site_name": "Karel Decherf | Athena CMS Architect",
+  "theme": "modern",
+  "colors": {
+    "primary": "#8b5cf6",
+    "secondary": "#10b981",
+    "background": "#0f172a",
+    "text": "#f8fafc"
+  }
 }
